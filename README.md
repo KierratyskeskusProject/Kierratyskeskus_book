@@ -7,6 +7,7 @@
 This will start the project both in a Electron window as well as the browser.
 
 ### Prevent browser from opening.
-Replace `start scripts content` with `BROWSER=none react-scripts start`
+The script 'start' from package.json.
+Replace `react-scripts start` with `BROWSER=none react-scripts start`.
 When preventing the browser, the project will only open in the Electron window.
 
