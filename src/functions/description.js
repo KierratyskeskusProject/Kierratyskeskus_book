@@ -1,9 +1,9 @@
 const description = (book) => {
-  const d = `${book.book.description}\n\n`;
-  const a = `Authors: ${book.book.authors.join(', ')}\n\n`;
-  const p = `Publisher: ${book.book.publisher}\n\n`;
-  const pc = `Pages: ${book.book.pageCount}\n\n`;
-  const pd = `Date: ${book.book.publishedDate}\n\n`;
+  const d = `<p>${book.book.description}</p>`;
+  const a = `<p>Authors: ${book.book.authors.join(', ')}</p>`;
+  const p = `<p>Publisher: ${book.book.publisher}</p>`;
+  const pc = `<p>Pages: ${book.book.pageCount}</p>`;
+  const pd = `<p>Date: ${book.book.publishedDate}</p>`;
 
   const desc = d + a + p + pc + pd;
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import BarcodeReader from 'react-barcode-reader';
+import copy from 'clipboard-copy';
 import { fetchBook } from '../redux/actions'; // fetchWeight
-import InputField from '../components/InputField';
 import description from '../functions/description';
 
 class Form extends Component {
@@ -14,44 +14,39 @@ class Form extends Component {
 
   handleError = err => err;
 
-  updateField = () => false;
+
+  copyThis = async (e, data) => {
+    e.preventDefault();
+    let d;
+    d = data.replace(/<p>/g, '');
+    d = d.replace(/<\/p>/g, '\n\n');
+    copy(d);
+  };
 
   render() {
     const { book } = this.props;
 
     return (
-      <div className="col-md-10">
+      <div className="col-md-12">
         <BarcodeReader onScan={this.handleScan} onError={this.handleError} />
-        {/* input eiting has been disabled for now. */}
-        <form>
-          <FormGroup>
-            <InputField
-              type="text"
-              icon="tag"
-              placeholder="Title"
-              value={book.book.title}
-              change={() => this.updateField}
-              name="title"
-            />
 
-            <FormControl
-              componentClass="textarea"
-              placeholder="Description"
-              rows={20}
-              readOnly
-              // use description function to construct the description layout
-              value={description(book)}
-            />
+        <div className="col-md-10 whiteBox">{book.book.title}</div>
+        <div className="col-md-2 copyIcon">
+          <Glyphicon
+            glyph="save-file"
+            onClick={e => this.copyThis(e, book.book.title)}
+          />
+        </div>
 
-            <InputField
-              type="number"
-              icon="scale"
-              placeholder="Total weight"
-              value="0" // static value untill scale is avalible.
-              name="weight"
-            />
-          </FormGroup>
-        </form>
+        <div className="col-md-10 whiteBox">
+          <div dangerouslySetInnerHTML={{ __html: description(book) }} />
+        </div>
+        <div className="col-md-2 copyIcon">
+          <Glyphicon
+            glyph="save-file"
+            onClick={e => this.copyThis(e, description(book))}
+          />
+        </div>
       </div>
     );
   }

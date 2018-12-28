@@ -25,8 +25,8 @@ class Validation extends Component {
             />
             <Status
               name="Authors"
-              status={book.book.authors ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.authors ? 'green' : 'red'}
+              status={book.book.authors[0] ? 'ok-circle' : 'remove-circle'}
+              statusColor={book.book.authors[0] ? 'green' : 'red'}
             />
             <Status
               name="Publisher:"
@@ -36,7 +36,7 @@ class Validation extends Component {
             <Status
               name="Page count"
               status={book.book.pageCount ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.publisher ? 'green' : 'red'}
+              statusColor={book.book.pageCount ? 'green' : 'red'}
             />
             <Status
               name="Published date"
