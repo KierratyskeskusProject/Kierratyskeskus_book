@@ -15,10 +15,6 @@ header{
   margin-bottom: 20px;
 }
 
-.inputField{
-  margin: 15px 0;
-}
-
 .barcodeCon{
   align-self: auto;
   background: #CCC;
@@ -35,6 +31,29 @@ header{
 .statusItem{
   margin-bottom: 5px;
 }
+
+.copyIcon{
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.copyIcon:hover{
+  opacity: 0.7;
+}
+
+.whiteBox{
+  padding: 10px;
+  min-height: 40px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background: #FFF;
+  -moz-box-shadow: 2px 2px 4px #cbc9c9;;
+  -webkit-box-shadow: 2px 2px 4px #cbc9c9;;
+  box-shadow: 2px 2px 4px #cbc9c9;
+}
+
+
+
 .green{color: green}
 .red{color: red}
 
