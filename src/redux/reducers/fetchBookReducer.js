@@ -5,11 +5,11 @@ import {
 } from '../types';
 
 const initialState = {
-  book:{
+  book: {
     isbn: 'xxxxxxxxxxxxx',
     title: '',
     description: '',
-    authors: "",
+    authors: '',
     publisher: '',
     pageCount: '',
     publishedDate: '',

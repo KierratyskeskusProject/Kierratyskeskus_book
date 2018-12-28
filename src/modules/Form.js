@@ -1,25 +1,12 @@
-import React, { Component } from "react";
-import InputField from "../components/InputField";
-import { FormGroup, FormControl } from "react-bootstrap";
-import { connect } from "react-redux";
-import { fetchBook } from "../redux/actions"; //fetchWeight
-import BarcodeReader from "react-barcode-reader";
+import React, { Component } from 'react';
+import { FormGroup, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import BarcodeReader from 'react-barcode-reader';
+import { fetchBook } from '../redux/actions'; // fetchWeight
+import InputField from '../components/InputField';
 
 class Form extends Component {
-  handleScan = isbn => {
-    const { fetchBook } = this.props;
-    fetchBook(isbn);
-  };
-
-  handleError = err => {
-    console.error(err);
-  };
-
-  updateField = () => {
-    return false;
-  };
-
-  //for testing without a scanner
+  // for testing without a scanner
   componentDidMount() {
     /*
     const {fetchBook} = this.props;
@@ -30,7 +17,19 @@ class Form extends Component {
       //(no book) 9000161484100
     */
   }
-  //remove functin when scanner is used
+  // remove functin when scanner is used
+
+  handleScan = (isbn) => {
+    // 9780321205681
+    const { fetchBookData } = this.props;
+    fetchBookData(isbn);
+  };
+
+  handleError = (err) => {
+    console.error(err);
+  };
+
+  updateField = () => false;
 
   render() {
     const { book } = this.props;
@@ -38,7 +37,7 @@ class Form extends Component {
     return (
       <div className="col-md-10">
         <BarcodeReader onScan={this.handleScan} onError={this.handleError} />
-        {/*input eiting has been disabled for now.*/}
+        {/* input eiting has been disabled for now. */}
         <form>
           <FormGroup>
             <InputField
@@ -46,7 +45,7 @@ class Form extends Component {
               icon="tag"
               placeholder="Title"
               value={book.book.title}
-              change={e => this.updateField}
+              change={() => this.updateField}
               name="title"
             />
 
@@ -63,7 +62,7 @@ class Form extends Component {
               type="number"
               icon="scale"
               placeholder="Total weight"
-              value={"0"} //static value untill scale is avalible.
+              value="0" // static value untill scale is avalible.
               name="weight"
             />
           </FormGroup>
@@ -74,14 +73,14 @@ class Form extends Component {
 }
 
 const mapStateToProps = state => ({
-  book: state.book
+  book: state.book,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBook: payload => dispatch(fetchBook(payload))
+  fetchBookData: payload => dispatch(fetchBook(payload)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Form);
