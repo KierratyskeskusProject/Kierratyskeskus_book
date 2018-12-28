@@ -4,30 +4,15 @@ import { connect } from 'react-redux';
 import BarcodeReader from 'react-barcode-reader';
 import { fetchBook } from '../redux/actions'; // fetchWeight
 import InputField from '../components/InputField';
+import description from '../functions/description';
 
 class Form extends Component {
-  // for testing without a scanner
-  componentDidMount() {
-    /*
-    const {fetchBook} = this.props;
-    console.log('auto book fetch happens in form.js componentDidMount');
-    fetchBook(9780470876411);
-      //(all included) 9780470876411
-      //(some is missing) 9783161484100
-      //(no book) 9000161484100
-    */
-  }
-  // remove functin when scanner is used
-
   handleScan = (isbn) => {
-    // 9780321205681
     const { fetchBookData } = this.props;
     fetchBookData(isbn);
   };
 
-  handleError = (err) => {
-    console.error(err);
-  };
+  handleError = err => err;
 
   updateField = () => false;
 
@@ -55,7 +40,7 @@ class Form extends Component {
               rows={20}
               readOnly
               // use description function to construct the description layout
-              value={book.book.description}
+              value={description(book)}
             />
 
             <InputField
