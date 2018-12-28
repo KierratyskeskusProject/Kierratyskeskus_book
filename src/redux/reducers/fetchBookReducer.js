@@ -9,7 +9,7 @@ const initialState = {
     isbn: 'xxxxxxxxxxxxx',
     title: '',
     description: '',
-    authors: '',
+    authors: [],
     publisher: '',
     pageCount: '',
     publishedDate: '',

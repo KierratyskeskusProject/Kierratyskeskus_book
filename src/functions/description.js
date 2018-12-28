@@ -1,10 +1,12 @@
 const description = (book) => {
-  /*
-  build description form all fields here and return
-  the object
-  */
+  const d = `${book.book.description}\n\n`;
+  const a = `Authors: ${book.book.authors.join(', ')}\n\n`;
+  const p = `Publisher: ${book.book.publisher}\n\n`;
+  const pc = `Pages: ${book.book.pageCount}\n\n`;
+  const pd = `Date: ${book.book.publishedDate}\n\n`;
 
-  console.log(book);
+  const desc = d + a + p + pc + pd;
+
+  return desc;
 };
-
 export default description;

@@ -42,7 +42,6 @@ const fetchBook = (isbn) => {
       .then(
         (bookJSON) => {
           if (!bookJSON.totalItems <= 0) {
-            console.log('found');
             const bookData = bookJSON.items[0].volumeInfo;
             validateData({ bookData, book });
             dispatch(fetchBookSuccess(book));
