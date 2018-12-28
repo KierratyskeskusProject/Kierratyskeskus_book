@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Form, Header, Validation} from './modules/index';
+import { Form, Header, Validation } from './modules/index';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header />
 
         <div className="container-fluid">
           <div className="col-md-6 col-sm-6">

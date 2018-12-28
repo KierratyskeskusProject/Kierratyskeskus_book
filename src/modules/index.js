@@ -5,5 +5,5 @@ import Header from './Header';
 export {
   Form,
   Validation,
-  Header 
-}
+  Header,
+};
