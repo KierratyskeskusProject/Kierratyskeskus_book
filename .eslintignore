@@ -6,3 +6,4 @@ electron-starter.js
 electron-wait-react.js
 serviceWorker.js
 build
+electron.js
