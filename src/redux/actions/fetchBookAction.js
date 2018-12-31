@@ -5,13 +5,14 @@ import { fetchBookBegin, fetchBookFailure, fetchBookSuccess } from '../types';
 const fetchBook = (isbn) => {
   const book = {
     isbn: 'xxxxxxxxxxxxx',
-    title: null,
+    title: '',
     description: '',
     authors: [],
-    publisher: null,
-    pageCount: null,
-    publishedDate: null,
-    imageUrl: null,
+    publisher: '',
+    pageCount: '',
+    publishedDate: '',
+    imageUrl: '',
+    msg: 'No book found',
   };
 
   const validateData = (parameters) => {
@@ -26,7 +27,7 @@ const fetchBook = (isbn) => {
     book.pageCount = bookData.pageCount ? bookData.pageCount : '';
     book.publisher = bookData.publisher ? bookData.publisher : '';
     book.publishedDate = bookData.publishedDate ? bookData.publishedDate : '';
-
+    book.msg = 'Book found';
     return book;
   };
 
@@ -46,7 +47,7 @@ const fetchBook = (isbn) => {
             validateData({ bookData, book });
             dispatch(fetchBookSuccess(book));
           } else {
-            dispatch(fetchBookFailure('Not a valid barcode'));
+            dispatch({ type: '@@INIT' });
           }
         },
         error => dispatch(fetchBookFailure(error)),
@@ -54,6 +55,5 @@ const fetchBook = (isbn) => {
   };
   return action;
 };
-
 
 export { fetchBook };

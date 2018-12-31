@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import Barcode from 'react-barcode';
 import { connect } from 'react-redux';
 import Status from '../components/Status';
-// import description from '../functions/description'
 
 class Validation extends Component {
   render() {
     const { book } = this.props;
-
     return (
       <div className="col-md-12 col-sm-12 col-xs-12">
-
         <div className="col-md-6 col-sm-12 col-xs-6">
           <Barcode
             width={1}
@@ -49,11 +46,10 @@ class Validation extends Component {
               statusColor={book.book.description ? 'green' : 'red'}
             />
           </div>
-
         </div>
 
         <div className="col-md-6 col-sm-12 col-xs-6 image">
-          <img src={book.book.imageUrl} alt="" />
+          <img src={book.book.imageUrl} alt="book cover" />
         </div>
       </div>
     );
@@ -64,19 +60,4 @@ const mapStateToProps = state => ({
   book: state.book,
 });
 
-
 export default connect(mapStateToProps)(Validation);
-
-/*
-{
-  book.map(function(item, index){
-    return(
-      <Status
-        key={index}
-        name={item.name}
-        status={item ? item : 'ok-circle'}
-        statusColor={color} />
-    );
-  })
-}
-*/

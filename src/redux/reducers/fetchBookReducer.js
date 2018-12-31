@@ -1,3 +1,4 @@
+import defaultImg from '../../assets/default.jpg';
 import {
   FETCH_BOOK_BEGIN,
   FETCH_BOOK_SUCCESS,
@@ -13,7 +14,8 @@ const initialState = {
     publisher: '',
     pageCount: '',
     publishedDate: '',
-    imageUrl: '',
+    imageUrl: defaultImg,
+    msg: 'No book found',
   },
   loading: false,
   error: null,
@@ -38,9 +40,10 @@ const fetchBookReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         book: action.payload.book,
+        error: null,
       };
     default:
-      return state;
+      return initialState;
   }
 };
 
