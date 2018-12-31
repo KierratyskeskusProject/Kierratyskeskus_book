@@ -3,13 +3,14 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
-const url = require('url');
 const isDev = require('electron-is-dev');
 
 let mainWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({width: 900, height: 680});
+    mainWindow = new BrowserWindow({show:false});
+    mainWindow.maximize();
+    mainWindow.show();
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     mainWindow.on('closed', () => mainWindow = null);
 }
