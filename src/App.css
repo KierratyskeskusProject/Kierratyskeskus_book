@@ -32,15 +32,6 @@ header{
   margin-bottom: 5px;
 }
 
-.copyIcon{
-  font-size: 20px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-.copyIcon:hover{
-  opacity: 0.7;
-}
-
 .whiteBox{
   padding: 10px;
   min-height: 40px;
@@ -50,9 +41,17 @@ header{
   -moz-box-shadow: 2px 2px 4px #cbc9c9;;
   -webkit-box-shadow: 2px 2px 4px #cbc9c9;;
   box-shadow: 2px 2px 4px #cbc9c9;
+  cursor: pointer;
 }
 
-
+.copyIcon{
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.copyIcon:hover{
+  opacity: 0.7;
+}
 
 .green{color: green}
 .red{color: red}
