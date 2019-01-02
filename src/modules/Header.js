@@ -4,7 +4,7 @@ class Header extends Component {
   render() {
     return (
       <header>
-        logo, title
+        Book Detection
       </header>
     );
   }
