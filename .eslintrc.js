@@ -9,6 +9,7 @@ module.exports = {
         "react/prop-types": "off",
         "no-shadow":0,
         "react/no-danger": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
     },
     "plugins": [
         "react", "import","react-redux",
