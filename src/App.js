@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Form, Header, Validation } from './modules/index';
-
+import {
+  Form, Header, Validation, Footer,
+} from './modules/index';
 
 class App extends Component {
   render() {
@@ -16,6 +17,10 @@ class App extends Component {
 
           <div className="col-md-6 col-sm-6">
             <Validation />
+          </div>
+
+          <div className="fixed-bottom">
+            <Footer />
           </div>
 
         </div>
