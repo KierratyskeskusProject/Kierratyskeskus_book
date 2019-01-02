@@ -16,32 +16,32 @@ class Validation extends Component {
 
           <div className="contentCon">
             <Status
-              name="Title:"
+              name="Otsikko:"
               status={book.book.title ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.title ? 'green' : 'red'}
             />
             <Status
-              name="Authors"
+              name="Kirjailijat"
               status={book.book.authors[0] ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.authors[0] ? 'green' : 'red'}
             />
             <Status
-              name="Publisher:"
+              name="Kustantaja:"
               status={book.book.publisher ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.publisher ? 'green' : 'red'}
             />
             <Status
-              name="Page count"
+              name="Sivumäärä"
               status={book.book.pageCount ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.pageCount ? 'green' : 'red'}
             />
             <Status
-              name="Published date"
+              name="Julkaistu"
               status={book.book.publishedDate ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.publishedDate ? 'green' : 'red'}
             />
             <Status
-              name="Description"
+              name="Alaotsikko"
               status={book.book.description ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.description ? 'green' : 'red'}
             />
