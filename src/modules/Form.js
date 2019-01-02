@@ -60,7 +60,6 @@ class Form extends Component {
         <div
           className="col-md-10 whiteBox"
           onClick={e => this.copyThis(e, book.book.title)}
-          onKeyDown={e => this.copyThis(e, book.book.title)}
           role="button"
           tabIndex={0}
         >
@@ -70,7 +69,6 @@ class Form extends Component {
           <Glyphicon
             glyph="save-file"
             onClick={e => this.copyThis(e, book.book.title)}
-            onKeyDown={e => this.copyThis(e, book.book.title)}
             tabIndex={0}
           />
         </div>
@@ -78,7 +76,6 @@ class Form extends Component {
         <div
           className="col-md-10 whiteBox"
           onClick={e => this.copyThis(e, description(book))}
-          onKeyDown={e => this.copyThis(e, description(book))}
           role="button"
           tabIndex={0}
         >
