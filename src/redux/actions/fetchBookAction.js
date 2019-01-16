@@ -32,17 +32,21 @@ const fetchBook = (isbn) => {
   };
 
   const action = (dispatch) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`;
+
+    const url = `https://api.finna.fi/api/v1/search?lookfor=cleanIsbn.${isbn}&type=AllFields&field[]=title&field[]=authors&field[]=year&field[]=genres&field[]=publishers&field[]=physicalDescriptions&field[]=uniformTitles&sort=relevance%2Cid%20asc&page=1&limit=20&prettyPrint=false&lng=fi`;
     dispatch(fetchBookBegin());
 
     const request = fetch(url, {
       method: 'GET',
     });
+    console.log('request',request);
     return request
       .then(bookData => bookData.json())
       .then(
         (bookJSON) => {
-          if (!bookJSON.totalItems <= 0) {
+          console.log(bookJSON);
+          if (!bookJSON.resultCount <= 0) {
+            console.log('bookJSON');
             const bookData = bookJSON.items[0].volumeInfo;
             validateData({ bookData, book });
             dispatch(fetchBookSuccess(book));
