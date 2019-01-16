@@ -12,10 +12,12 @@ const initialState = {
     description: '',
     authors: [],
     publisher: '',
-    pageCount: '',
+    physicalDescriptions: [],
     publishedDate: '',
+    genres:[],
     imageUrl: defaultImg,
     msg: 'No book found',
+
   },
   loading: false,
   error: null,

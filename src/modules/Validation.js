@@ -31,9 +31,9 @@ class Validation extends Component {
               statusColor={book.book.publisher ? 'green' : 'red'}
             />
             <Status
-              name="Sivumäärä"
-              status={book.book.pageCount ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.pageCount ? 'green' : 'red'}
+              name="Sivumäärä ja Kuvaukset"
+              status={book.book.physicalDescriptions[0] ? 'ok-circle' : 'remove-circle'}
+              statusColor={book.book.physicalDescriptions[0] ? 'green' : 'red'}
             />
             <Status
               name="Julkaistu"
@@ -41,9 +41,14 @@ class Validation extends Component {
               statusColor={book.book.publishedDate ? 'green' : 'red'}
             />
             <Status
-              name="Alaotsikko"
-              status={book.book.description ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.description ? 'green' : 'red'}
+                name="Tyylilajit"
+                status={book.book.genres[0] ? 'ok-circle' : 'remove-circle'}
+                statusColor={book.book.genres[0] ? 'green' : 'red'}
+            />
+            <Status
+                name="Alaotsikko"
+                status={book.book.description ? 'ok-circle' : 'remove-circle'}
+                statusColor={book.book.description ? 'green' : 'red'}
             />
           </div>
         </div>

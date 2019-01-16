@@ -9,45 +9,45 @@ const fetchBook = (isbn) => {
     description: '',
     authors: [],
     publisher: '',
-    pageCount: '',
+    physicalDescriptions:[],
     publishedDate: '',
     imageUrl: '',
+    genres:[],
     msg: 'No book found',
   };
 
   const validateData = (parameters) => {
     const { bookData, book } = parameters;
-    book.isbn = bookData.industryIdentifiers[1]
-      ? bookData.industryIdentifiers[1].identifier
-      : 'xxxxxxxxxxxxx';
+    book.isbn = bookData.cleanIsbn ? bookData.cleanIsbn : 'xxxxxxxxxxxxx';
     book.title = bookData.title ? bookData.title : '';
-    book.authors = bookData.authors ? bookData.authors : '';
+    book.authors = bookData.primaryAuthors ? bookData.primaryAuthors : '';
     book.description = bookData.description ? bookData.description : '';
     book.imageUrl = bookData.imageLinks ? bookData.imageLinks.thumbnail : '';
-    book.pageCount = bookData.pageCount ? bookData.pageCount : '';
-    book.publisher = bookData.publisher ? bookData.publisher : '';
-    book.publishedDate = bookData.publishedDate ? bookData.publishedDate : '';
+    book.physicalDescriptions = bookData.physicalDescriptions ? bookData.physicalDescriptions[0] : '';
+    book.publisher = bookData.publishers ? bookData.publishers[0] : '';
+    book.publishedDate = bookData.year ? bookData.year : '';
+    book.genres = bookData.genres ? bookData.genres : 'not yest';
     book.msg = 'Book found';
+    console.log('bookData',book);
     return book;
   };
 
   const action = (dispatch) => {
-
-    const url = `https://api.finna.fi/api/v1/search?lookfor=cleanIsbn.${isbn}&type=AllFields&field[]=title&field[]=authors&field[]=year&field[]=genres&field[]=publishers&field[]=physicalDescriptions&field[]=uniformTitles&sort=relevance%2Cid%20asc&page=1&limit=20&prettyPrint=false&lng=fi`;
+    const url = `https://api.finna.fi/api/v1/search?lookfor=cleanIsbn.${isbn}&type=AllFields&field[]=title&field[]=primaryAuthors&field[]=year&field[]=genres&field[]=publishers&field[]=physicalDescriptions&field[]=cleanIsbn&sort=relevance%2Cid%20asc&page=1&limit=20&prettyPrint=false&lng=fi`;
     dispatch(fetchBookBegin());
 
     const request = fetch(url, {
       method: 'GET',
     });
-    console.log('request',request);
+    //console.log('request',request);
     return request
       .then(bookData => bookData.json())
       .then(
         (bookJSON) => {
-          console.log(bookJSON);
+          console.log('bookJSON',bookJSON);
           if (!bookJSON.resultCount <= 0) {
             console.log('bookJSON');
-            const bookData = bookJSON.items[0].volumeInfo;
+            const bookData = bookJSON.records[0];
             validateData({ bookData, book });
             dispatch(fetchBookSuccess(book));
           } else {
