@@ -1,4 +1,3 @@
-import defaultImg from '../../assets/default.jpg';
 import {
   FETCH_BOOK_BEGIN,
   FETCH_BOOK_SUCCESS,
@@ -15,7 +14,6 @@ const initialState = {
     physicalDescriptions: [],
     publishedDate: '',
     genres:[],
-    imageUrl: defaultImg,
     msg: 'No book found',
 
   },

@@ -29,7 +29,7 @@
     "electron": "electron .",
     "lint": "eslint \"./**/*.js\"",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-build": "electron-builder",
+    "electron-build": "electron-builder -mw",
     "build": "yarn react-build && yarn electron-build"
   },
   "eslintConfig": {

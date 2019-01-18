@@ -10,10 +10,9 @@ class Validation extends Component {
       <div className="col-md-12 col-sm-12 col-xs-12">
         <div className="col-md-6 col-sm-12 col-xs-6">
           <Barcode
-            width={1}
+            width={2}
             value={book.book.isbn}
           />
-
           <div className="contentCon">
             <Status
               name="Otsikko:"
@@ -45,16 +44,7 @@ class Validation extends Component {
                 status={book.book.genres[0] ? 'ok-circle' : 'remove-circle'}
                 statusColor={book.book.genres[0] ? 'green' : 'red'}
             />
-            <Status
-                name="Alaotsikko"
-                status={book.book.description ? 'ok-circle' : 'remove-circle'}
-                statusColor={book.book.description ? 'green' : 'red'}
-            />
           </div>
-        </div>
-
-        <div className="col-md-6 col-sm-12 col-xs-6 image">
-          <img src={book.book.imageUrl} alt="book cover" />
         </div>
       </div>
     );
