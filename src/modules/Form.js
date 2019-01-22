@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import BarcodeReader from 'react-barcode-reader';
 import copy from 'clipboard-copy';
 import { ToastContainer, toast } from 'react-toastify';
-import { fetchBook } from '../redux/actions'; // fetchWeight
+import { fetchBook } from '../redux/actions';
 import description from '../functions/description';
+import TextRecognition from  '../functions/TextRecognition';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -87,6 +88,9 @@ class Form extends Component {
             onClick={e => this.copyThis(e, description(book))}
           />
         </div>
+          <div>
+              <TextRecognition/>
+          </div>
       </div>
     );
   }
