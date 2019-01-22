@@ -44,11 +44,6 @@ class Validation extends Component {
                 status={book.book.genres[0] ? 'ok-circle' : 'remove-circle'}
                 statusColor={book.book.genres[0] ? 'green' : 'red'}
             />
-            <Status
-                name="Alaotsikko"
-                status={book.book.description ? 'ok-circle' : 'remove-circle'}
-                statusColor={book.book.description ? 'green' : 'red'}
-            />
           </div>
         </div>
       </div>
