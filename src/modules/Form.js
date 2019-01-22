@@ -86,13 +86,12 @@ class Form extends Component {
             <div className="col-md-12">
                 <ToastContainer autoClose={2000}/>
                 <BarcodeReader onScan={this.handleScan} onError={this.handleError}/>
-
                 <div
                     className="col-md-10 whiteBox"
                     onClick={e => this.copyThis(e, book.book.title)}
                     role="button"
                     tabIndex={0}
-                >
+                >Otsikko:
                     {book.book.title}
                 </div>
                 <div className="col-md-2 copyIcon">
@@ -102,20 +101,32 @@ class Form extends Component {
                         tabIndex={0}
                     />
                 </div>
-
+                <div
+                className="col-md-10 whiteBox"
+                onClick={e => this.copyThis(e, description(book))}
+                role="button"
+                tabIndex={0}
+            >
+                <div dangerouslySetInnerHTML={{__html: description(book)}}/>
+            </div>
+                <div className="col-md-2 copyIcon">
+                    <Glyphicon
+                        glyph="save-file"
+                        onClick={e => this.copyThis(e, description(book))}
+                    />
+                </div>
                 <div
                     className="col-md-10 whiteBox"
-                    onClick={e => this.copyThis(e, description(book))}
+                    onClick={e => this.copyThis(e, this.state.description.tex)}
                     role="button"
                     tabIndex={0}
-                >
-                    <div dangerouslySetInnerHTML={{__html: description(book)}}/>
+                >Alaotsikko:
                     <div dangerouslySetInnerHTML={{__html: this.state.description.text}}/>
                 </div>
                 <div className="col-md-2 copyIcon">
                     <Glyphicon
                         glyph="save-file"
-                        onClick={e => this.copyThis(e, description(book))}
+                        onClick={e => this.copyThis(e, this.state.description.text)}
                     />
                 </div>
                 <div>
