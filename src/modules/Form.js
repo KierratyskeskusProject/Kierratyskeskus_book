@@ -102,13 +102,13 @@ class Form extends Component {
                     />
                 </div>
                 <div
-                className="col-md-10 whiteBox"
-                onClick={e => this.copyThis(e, description(book))}
-                role="button"
-                tabIndex={0}
-            >
-                <div dangerouslySetInnerHTML={{__html: description(book)}}/>
-            </div>
+                    className="col-md-10 whiteBox"
+                    onClick={e => this.copyThis(e, description(book))}
+                    role="button"
+                    tabIndex={0}
+                >
+                    <div dangerouslySetInnerHTML={{__html: description(book)}}/>
+                </div>
                 <div className="col-md-2 copyIcon">
                     <Glyphicon
                         glyph="save-file"
@@ -150,11 +150,9 @@ class Form extends Component {
 const mapStateToProps = state => ({
     book: state.book,
 });
-
 const mapDispatchToProps = dispatch => ({
     fetchBookData: payload => dispatch(fetchBook(payload)),
 });
-
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
