@@ -3,8 +3,6 @@ import Webcam from 'react-webcam';
 import {connect} from "react-redux";
 
 class TextRecognition extends Component {
-    state = {description:''};
-
     setRef = (webcam) => this.webcam = webcam;
 
     capture = async () => {
@@ -31,22 +29,6 @@ class TextRecognition extends Component {
         this.query(data);
     };
 
-    query = data => fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCR-0mjTNKnUxcHVYHMs-j6JMWkbl3BT3w', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    }).then(response => response.json())
-        .then((textResponse) => {
-            const res = textResponse.responses[0];
-            const description = {
-                text: res.textAnnotations ? res.textAnnotations[0].description : 'no text',
-            };
-            this.setState({description});
-        });
-
     render() {
         const videoConstraints = {
             width: 300,
@@ -70,8 +52,7 @@ class TextRecognition extends Component {
     }
 
 }
-const mapStateToProps = state => ({
-    description: state.book.description,
-});
 
-export default connect(mapStateToProps)(TextRecognition);
+
+
+export default connect(null)(TextRecognition);

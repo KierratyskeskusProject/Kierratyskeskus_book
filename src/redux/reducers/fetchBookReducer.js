@@ -8,7 +8,6 @@ const initialState = {
   book: {
     isbn: 'xxxxxxxxxxxxx',
     title: '',
-    description: '',
     authors: [],
     publisher: '',
     physicalDescriptions: [],
