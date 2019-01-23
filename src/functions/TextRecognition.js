@@ -1,32 +1,16 @@
 import React, {Component} from 'react';
 import Webcam from 'react-webcam';
 import {connect} from "react-redux";
+import {fetchText} from "../redux/actions";
 
 class TextRecognition extends Component {
     setRef = (webcam) => this.webcam = webcam;
 
     capture = async () => {
+        const {fetchText} = this.props;
         const screenshot = this.webcam.getScreenshot();
         const image = screenshot.replace(/^data:image\/[a-z]+;base64,/, '');
-        this.analyze(image);
-    };
-
-    analyze = (image) => {
-        const data = {
-            requests: [
-                {
-                    image: {
-                        content: `${image}`,
-                    },
-                    features: [
-                        {
-                            type: 'TEXT_DETECTION',
-                        },
-                    ],
-                },
-            ],
-        };
-        this.query(data);
+        fetchText(image);
     };
 
     render() {
@@ -54,5 +38,15 @@ class TextRecognition extends Component {
 }
 
 
+const mapStateToProps = state => ({
+    text: state.text,
+});
+const mapDispatchToProps = (dispatch)=> ({
+    fetchText:payload => dispatch(fetchText(payload))
 
-export default connect(null)(TextRecognition);
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TextRecognition);

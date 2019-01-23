@@ -4,13 +4,20 @@ import {connect} from 'react-redux';
 import BarcodeReader from 'react-barcode-reader';
 import copy from 'clipboard-copy';
 import {ToastContainer, toast} from 'react-toastify';
-import {fetchBook,fetchText} from '../redux/actions';
+import {fetchBook} from '../redux/actions';
 import description from '../functions/description';
 import TextRecognition from '../functions/TextRecognition';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 class Form extends Component {
+
+    handleScan = async (isbn) => {
+        const { fetchBookData } = this.props;
+        fetchBookData(isbn);
+        this.notify('Scan complete', 1);
+    };
+
     copyThis = (e, data) => {
         let d;
         d = data.replace(/<p>/g, '');
@@ -32,6 +39,7 @@ class Form extends Component {
 
     render() {
         const {book,text} = this.props;
+        console.log(this.props);
         return (
             <div className="col-md-12">
                 <ToastContainer autoClose={2000}/>
@@ -65,6 +73,7 @@ class Form extends Component {
                         onClick={e => this.copyThis(e, description(book))}
                     />
                 </div>
+                <TextRecognition/>
             </div>
         );
     }
@@ -72,11 +81,10 @@ class Form extends Component {
 
 const mapStateToProps = state => ({
     book: state.book,
-    text: state.text,
 });
+
 const mapDispatchToProps = dispatch => ({
     fetchBookData: payload => dispatch(fetchBook(payload)),
-    fetchTextData: payload => dispatch(fetchText(payload)),
 });
 export default connect(
     mapStateToProps,
