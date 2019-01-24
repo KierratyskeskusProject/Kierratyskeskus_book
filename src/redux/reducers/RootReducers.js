@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import fetchBookReducer from './fetchBookReducer';
-import {fetchTextReducer} from './fetchTextReducer'
+import { fetchTextReducer } from './fetchTextReducer';
 
 export default combineReducers({
-    book: fetchBookReducer,
-    text: fetchTextReducer,
+  book: fetchBookReducer,
+  text: fetchTextReducer,
 });

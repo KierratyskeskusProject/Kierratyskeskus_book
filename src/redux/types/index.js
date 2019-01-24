@@ -8,30 +8,30 @@ export const FETCH_TEXT_FAILURE = 'FETCH_TEXT_FAILURE';
 
 
 export const fetchBookBegin = () => ({
-    type: FETCH_BOOK_BEGIN,
+  type: FETCH_BOOK_BEGIN,
 });
 
 export const fetchBookSuccess = book => ({
-    type: FETCH_BOOK_SUCCESS,
-    payload: {book},
+  type: FETCH_BOOK_SUCCESS,
+  payload: { book },
 });
 
 export const fetchBookFailure = error => ({
-    type: FETCH_BOOK_FAILURE,
-    payload: {error},
+  type: FETCH_BOOK_FAILURE,
+  payload: { error },
 });
 
 
 export const fetchTextBegin = () => ({
-    type: FETCH_TEXT_BEGIN,
+  type: FETCH_TEXT_BEGIN,
 });
 
 export const fetchTextSuccess = text => ({
-    type: FETCH_TEXT_SUCCESS,
-    payload: text,
+  type: FETCH_TEXT_SUCCESS,
+  payload: text,
 });
 
 export const fetchTextFailure = error => ({
-    type: FETCH_TEXT_FAILURE,
-    payload: {error},
+  type: FETCH_TEXT_FAILURE,
+  payload: { error },
 });
