@@ -39,7 +39,6 @@ class Form extends Component {
 
     render() {
         const {book,text} = this.props;
-        console.log(this.props);
         return (
             <div className="col-md-12">
                 <ToastContainer autoClose={2000}/>

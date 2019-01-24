@@ -9,7 +9,8 @@ export const fetchText = (image) => {
              },
             ],
         };
-        dispatch(fetchTextBegin());
+         dispatch(fetchTextBegin());
+
         const url = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCR-0mjTNKnUxcHVYHMs-j6JMWkbl3BT3w';
         const request = fetch(url, {
             method: 'POST',
@@ -19,13 +20,14 @@ export const fetchText = (image) => {
             },
             body: JSON.stringify(data),
         });
-     
+
         return request
             .then(response => response.json())
             .then((textResponse) => {
                     const res = textResponse.responses[0];
-                    const description = { text: res.textAnnotations[0].description };
-                    dispatch(fetchTextSuccess(description.text));
+                    const description = {text: res.fullTextAnnotation.text};
+                    console.log('desciption', description);
+                    dispatch(fetchTextSuccess(description));
                 }, error => fetchBookFailure(error)
             );
     };

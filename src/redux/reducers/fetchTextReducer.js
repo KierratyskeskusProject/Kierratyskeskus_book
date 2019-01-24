@@ -28,7 +28,7 @@ export const fetchTextReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                text: [...state.text, action.payload.text],
+                text: action.payload.text,
                 error: null,
             };
         default:
