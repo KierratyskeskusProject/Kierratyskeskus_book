@@ -25,6 +25,7 @@ export const fetchTextReducer = (state = initialState, action) => {
                 error: action.payload.error,
             };
         case FETCH_TEXT_SUCCESS:
+            console.log('action payload',action.payload);
             return {
                 ...state,
                 loading: false,

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   book: {
-    isbn: 'xxxxxxxxxxxxx',
+    isbn: '',
     title: '',
     authors: [],
     publisher: '',

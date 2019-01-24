@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Barcode from 'react-barcode';
 import {connect} from 'react-redux';
 import Status from '../components/Status';
 
@@ -9,10 +8,6 @@ class Validation extends Component {
         return (
             <div className="col-md-12 col-sm-12 col-xs-12">
                 <div className="col-md-6 col-sm-12 col-xs-6">
-                    <Barcode
-                        width={2}
-                        value={book.book.isbn}
-                    />
                     <div className="contentCon">
                         <Status
                             name="Otsikko:"
@@ -43,6 +38,11 @@ class Validation extends Component {
                             name="Tyylilajit"
                             status={book.book.genres[0] ? 'ok-circle' : 'remove-circle'}
                             statusColor={book.book.genres[0] ? 'green' : 'red'}
+                        />
+                        <Status
+                            name="ISBN"
+                            status={book.book.isbn ? 'ok-circle' : 'remove-circle'}
+                            statusColor={book.book.isbn ? 'green' : 'red'}
                         />
                     </div>
                 </div>

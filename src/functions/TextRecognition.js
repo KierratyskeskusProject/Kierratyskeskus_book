@@ -24,29 +24,27 @@ class TextRecognition extends Component {
             <div>
                 <Webcam
                     audio={false}
-                    height={350}
+                    height={360}
                     ref={this.setRef}
                     screenshotFormat="image/jpeg"
-                    width={350}
+                    width={360}
                     videoConstraints={videoConstraints}
                 />
-                <button type="button" onClick={this.capture}>Capture photo</button>
+                <div>
+                    <button className="btn btn-success" type="button" onClick={this.capture}>Capture photo</button>
+                </div>
             </div>
         );
     }
 
 }
 
-
-const mapStateToProps = state => ({
-    text: state.text,
-});
-const mapDispatchToProps = (dispatch)=> ({
-    fetchText:payload => dispatch(fetchText(payload))
+const mapDispatchToProps = (dispatch) => ({
+    fetchText: payload => dispatch(fetchText(payload))
 
 });
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(TextRecognition);

@@ -1,15 +1,16 @@
-import {fetchTextBegin, fetchTextSuccess, fetchBookFailure} from '../types'
+import {fetchTextBegin, fetchTextSuccess, fetchTextFailure} from '../types'
 
 export const fetchText = (image) => {
 
-    const action = (dispatch) => {
+    const action = async (dispatch) => {
         const data = {
-            requests: [ { image: { content: `${image}`},
-            features: [ { type: 'TEXT_DETECTION' }],
-             },
+            requests: [{
+                image: {content: `${image}`},
+                features: [{type: 'TEXT_DETECTION'}],
+            },
             ],
         };
-         dispatch(fetchTextBegin());
+        dispatch(fetchTextBegin());
 
         const url = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCR-0mjTNKnUxcHVYHMs-j6JMWkbl3BT3w';
         const request = fetch(url, {
@@ -24,11 +25,16 @@ export const fetchText = (image) => {
         return request
             .then(response => response.json())
             .then((textResponse) => {
-                    const res = textResponse.responses[0];
-                    const description = {text: res.fullTextAnnotation.text};
-                    console.log('desciption', description);
-                    dispatch(fetchTextSuccess(description));
-                }, error => fetchBookFailure(error)
+                    console.log('textResponse', textResponse);
+                    if (textResponse.responses[0].fullTextAnnotation) {
+                        const description = textResponse.responses[0].fullTextAnnotation.text;
+                        dispatch(fetchTextSuccess({text: description}));
+                    } else {
+                        dispatch(fetchTextSuccess('no text'));
+                    }
+
+
+                }, error => fetchTextFailure(error)
             );
     };
     return action;

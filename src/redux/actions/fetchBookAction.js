@@ -4,7 +4,7 @@ import {fetchBookBegin, fetchBookFailure, fetchBookSuccess} from '../types';
 
 const fetchBook = (isbn) => {
     const book = {
-        isbn: 'xxxxxxxxxxxxx',
+        isbn: '',
         title: '',
         description: '',
         authors: [],
@@ -17,10 +17,9 @@ const fetchBook = (isbn) => {
 
     const validateData = (parameters) => {
         const {bookData, book} = parameters;
-        book.isbn = bookData.cleanIsbn ? bookData.cleanIsbn : 'xxxxxxxxxxxxx';
+        book.isbn = bookData.cleanIsbn ? bookData.cleanIsbn : '';
         book.title = bookData.title ? bookData.title : '';
         book.authors = bookData.primaryAuthors ? bookData.primaryAuthors : '';
-        book.description = bookData.description ? bookData.description : '';
         book.physicalDescriptions = bookData.physicalDescriptions ? bookData.physicalDescriptions[0] : '';
         book.publisher = bookData.publishers ? bookData.publishers[0] : '';
         book.publishedDate = bookData.year ? bookData.year : '';

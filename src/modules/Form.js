@@ -6,14 +6,12 @@ import copy from 'clipboard-copy';
 import {ToastContainer, toast} from 'react-toastify';
 import {fetchBook} from '../redux/actions';
 import description from '../functions/description';
-import TextRecognition from '../functions/TextRecognition';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 class Form extends Component {
 
     handleScan = async (isbn) => {
-        const { fetchBookData } = this.props;
+        const {fetchBookData} = this.props;
         fetchBookData(isbn);
         this.notify('Scan complete', 1);
     };
@@ -38,7 +36,7 @@ class Form extends Component {
     };
 
     render() {
-        const {book,text} = this.props;
+        const {book, text} = this.props;
         return (
             <div className="col-md-12">
                 <ToastContainer autoClose={2000}/>
@@ -72,7 +70,20 @@ class Form extends Component {
                         onClick={e => this.copyThis(e, description(book))}
                     />
                 </div>
-                <TextRecognition/>
+                <div
+                    className="col-md-10 whiteBox"
+                    onClick={e => this.copyThis(e, text.text)}
+                    role="button"
+                    tabIndex={0}
+                >Alaotsikko:
+                    <div dangerouslySetInnerHTML={{__html: text.text}}/>
+                </div>
+                <div className="col-md-2 copyIcon">
+                    <Glyphicon
+                        glyph="save-file"
+                        onClick={e => this.copyThis(e, text.text)}
+                    />
+                </div>
             </div>
         );
     }
@@ -80,6 +91,7 @@ class Form extends Component {
 
 const mapStateToProps = state => ({
     book: state.book,
+    text: state.text,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -23,12 +23,12 @@ export const fetchBookFailure = error => ({
 
 
 export const fetchTextBegin = () => ({
-    type: FETCH_TEXT_SUCCESS,
+    type: FETCH_TEXT_BEGIN,
 });
 
 export const fetchTextSuccess = text => ({
     type: FETCH_TEXT_SUCCESS,
-    payload: {text},
+    payload: text,
 });
 
 export const fetchTextFailure = error => ({
