@@ -35,7 +35,7 @@ class Form extends Component {
     };
 
     render() {
-      const { book, text } = this.props;
+      const { book } = this.props;
       return (
         <div className="col-md-12">
           <ToastContainer autoClose={2000} />
@@ -46,7 +46,7 @@ class Form extends Component {
             role="button"
             tabIndex={0}
           >
-Otsikko:
+            <h4>Otsikko:</h4>
             {book.book.title}
           </div>
           <div className="col-md-2 copyIcon">
@@ -72,17 +72,17 @@ Otsikko:
           </div>
           <div
             className="col-md-10 whiteBox"
-            onClick={e => this.copyThis(e, text.text)}
+            onClick={e => this.copyThis(e, book.description)}
             role="button"
             tabIndex={0}
           >
-Alaotsikko:
-            <div dangerouslySetInnerHTML={{ __html: text.text }} />
+            <h4>Alaotsikko:</h4>
+            <div dangerouslySetInnerHTML={{ __html: book.description }} />
           </div>
           <div className="col-md-2 copyIcon">
             <Glyphicon
               glyph="save-file"
-              onClick={e => this.copyThis(e, text.text)}
+              onClick={e => this.copyThis(e, book.description)}
             />
           </div>
         </div>
@@ -92,7 +92,6 @@ Alaotsikko:
 
 const mapStateToProps = state => ({
   book: state.book,
-  text: state.text,
 });
 
 const mapDispatchToProps = dispatch => ({

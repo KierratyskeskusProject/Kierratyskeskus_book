@@ -23,7 +23,7 @@ const fetchBook = (isbn) => {
     book.physicalDescriptions = bookData.physicalDescriptions ? bookData.physicalDescriptions[0] : '';
     book.publisher = bookData.publishers ? bookData.publishers[0] : '';
     book.publishedDate = bookData.year ? bookData.year : '';
-    book.genres = bookData.genres ? bookData.genres : 'not yest';
+    book.genres = bookData.genres ? bookData.genres : '';
     book.msg = 'Book found';
     return book;
   };

@@ -24,7 +24,6 @@ export const fetchText = (image) => {
     return request
       .then(response => response.json())
       .then((textResponse) => {
-        console.log('textResponse', textResponse);
         if (textResponse.responses[0].fullTextAnnotation) {
           const description = textResponse.responses[0].fullTextAnnotation.text;
           dispatch(fetchTextSuccess({ text: description }));
