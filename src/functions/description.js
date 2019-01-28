@@ -1,10 +1,10 @@
 const description = (book) => {
-  const a = `<p>Kirjailijat: ${book.book.authors}</p>`;
-  const g = `<p>Tyylilajit: ${book.book.genres}</p>`;
-  const p = `<p>Kustantaja: ${book.book.publisher}</p>`;
-  const pc = `<p>Sivumäärä ja Kuvaukset: ${book.book.physicalDescriptions}</p>`;
-  const pd = `<p>Julkaistu: ${book.book.publishedDate}</p>`;
-  const isbn = `<p>ISBN: ${book.book.isbn}</p>`;
+  const a = `<p><b>Kirjailijat:</b> ${book.book.authors}</p>`;
+  const g = `<p><b>Tyylilajit:</b> ${book.book.genres}</p>`;
+  const p = `<p><b>Kustantaja:</b> ${book.book.publisher}</p>`;
+  const pc = `<p><b>Sivumäärä ja Kuvaukset:</b> ${book.book.physicalDescriptions}</p>`;
+  const pd = `<p><b>Julkaistu:</b> ${book.book.publishedDate}</p>`;
+  const isbn = `<p><b>ISBN:</b>${book.book.isbn}</p>`;
 
   return a + p + pc + pd + g + isbn;
 };
