@@ -4,7 +4,7 @@ class Header extends Component {
   render() {
     return (
       <header>
-                Book Detection
+        <h4>Book Detection</h4>
       </header>
     );
   }
