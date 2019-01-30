@@ -12,7 +12,6 @@ const initialState = {
     publisher: '',
     physicalDescriptions: [],
     publishedDate: '',
-    genres: [],
     msg: 'No book found',
 
   },

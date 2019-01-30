@@ -18,7 +18,7 @@ class Form extends Component {
     copyThis = (e, data) => {
       let d;
       d = data.replace(/<p>/g, '');
-      d = d.replace(/<\/p>/g, '\n\n');
+      d = d.replace(/<\/p>/g, '\n');
       copy(d);
       this.notify('Copied to clipboard', 0);
     };
@@ -46,7 +46,7 @@ class Form extends Component {
             role="button"
             tabIndex={0}
           >
-            <h4>Otsikko:</h4>
+            Otsikko:
             {book.book.title}
           </div>
           <div className="col-md-2 copyIcon">
@@ -76,7 +76,7 @@ class Form extends Component {
             role="button"
             tabIndex={0}
           >
-            <h4>Alaotsikko:</h4>
+            Alaotsikko:
             <div dangerouslySetInnerHTML={{ __html: book.description }} />
           </div>
           <div className="col-md-2 copyIcon">

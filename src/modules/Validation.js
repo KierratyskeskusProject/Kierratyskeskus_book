@@ -25,7 +25,7 @@ class Validation extends Component {
               statusColor={book.book.publisher ? 'green' : 'red'}
             />
             <Status
-              name="Sivumäärä ja Kuvaukset"
+              name="Ulkoasu"
               status={book.book.physicalDescriptions[0] ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.physicalDescriptions[0] ? 'green' : 'red'}
             />
@@ -33,11 +33,6 @@ class Validation extends Component {
               name="Julkaistu"
               status={book.book.publishedDate ? 'ok-circle' : 'remove-circle'}
               statusColor={book.book.publishedDate ? 'green' : 'red'}
-            />
-            <Status
-              name="Tyylilajit"
-              status={book.book.genres[0] ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.genres[0] ? 'green' : 'red'}
             />
             <Status
               name="ISBN"
