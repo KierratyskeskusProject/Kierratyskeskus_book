@@ -2,6 +2,7 @@ import {fetchTextBegin, fetchTextSuccess, fetchTextFailure} from '../types';
 
 const GOOGLE_API_KEY = 'Key to use Google Cloud Platform';
 
+
 export const fetchText = (image) => {
     const action = async (dispatch) => {
         const data = {
@@ -26,8 +27,9 @@ export const fetchText = (image) => {
         return request
             .then(response => response.json())
             .then((textResponse) => {
-                console.log('textResponse',textResponse);
-                if (textResponse.error.code !== 400) {
+                if (textResponse.error) {
+                    dispatch(fetchTextSuccess('no data'))
+                } else if (textResponse.responses[0].fullTextAnnotation) {
                     const description = textResponse.responses[0].fullTextAnnotation.text;
                     dispatch(fetchTextSuccess({text: description}));
                 } else {
