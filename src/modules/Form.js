@@ -76,7 +76,7 @@ class Form extends Component {
             role="button"
             tabIndex={0}
           >
-            Alaotsikko:
+            Kuvaus:
             <div dangerouslySetInnerHTML={{ __html: book.description }} />
           </div>
           <div className="col-md-2 copyIcon">

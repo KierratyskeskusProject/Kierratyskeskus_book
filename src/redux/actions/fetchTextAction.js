@@ -1,6 +1,6 @@
 import {fetchTextBegin, fetchTextSuccess, fetchTextFailure} from '../types';
 
-const GOOGLE_API_KEY = 'Key to use Google Cloud Platform';
+const GOOGLE_API_KEY = 'Your App key here';
 
 
 export const fetchText = (image) => {

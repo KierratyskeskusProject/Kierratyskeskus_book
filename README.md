@@ -8,7 +8,7 @@
 ### Installation
    Run `yarn` in root folder.
 ### Google Cloud Platform
-   In order to use Text Recognition it is required to have Google API key which should be placed in fetchTextAction.
+   In order to use Text Recognition it is required to have Google API key which should be placed in fetchTextAction.js file
 ### Run the project.
    `yarn run electron-dev`
    This will start the project both in a Electron window as well as the browser.
