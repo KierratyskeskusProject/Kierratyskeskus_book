@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Barcode from 'react-barcode';
 import { connect } from 'react-redux';
 import Status from '../components/Status';
 
@@ -9,11 +8,6 @@ class Validation extends Component {
     return (
       <div className="col-md-12 col-sm-12 col-xs-12">
         <div className="col-md-6 col-sm-12 col-xs-6">
-          <Barcode
-            width={1}
-            value={book.book.isbn}
-          />
-
           <div className="contentCon">
             <Status
               name="Otsikko:"
@@ -31,9 +25,9 @@ class Validation extends Component {
               statusColor={book.book.publisher ? 'green' : 'red'}
             />
             <Status
-              name="Sivumäärä"
-              status={book.book.pageCount ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.pageCount ? 'green' : 'red'}
+              name="Ulkoasu"
+              status={book.book.physicalDescriptions[0] ? 'ok-circle' : 'remove-circle'}
+              statusColor={book.book.physicalDescriptions[0] ? 'green' : 'red'}
             />
             <Status
               name="Julkaistu"
@@ -41,15 +35,11 @@ class Validation extends Component {
               statusColor={book.book.publishedDate ? 'green' : 'red'}
             />
             <Status
-              name="Alaotsikko"
-              status={book.book.description ? 'ok-circle' : 'remove-circle'}
-              statusColor={book.book.description ? 'green' : 'red'}
+              name="ISBN"
+              status={book.book.isbn ? 'ok-circle' : 'remove-circle'}
+              statusColor={book.book.isbn ? 'green' : 'red'}
             />
           </div>
-        </div>
-
-        <div className="col-md-6 col-sm-12 col-xs-6 image">
-          <img src={book.book.imageUrl} alt="book cover" />
         </div>
       </div>
     );
