@@ -46,8 +46,7 @@ class Form extends Component {
             role="button"
             tabIndex={0}
           >
-            Otsikko:
-            {book.book.title}
+            Otsikko: {book.book.title}
           </div>
           <div className="col-md-2 copyIcon">
             <Glyphicon
